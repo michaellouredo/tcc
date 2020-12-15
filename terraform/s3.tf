@@ -54,6 +54,9 @@ resource "aws_s3_bucket_public_access_block" "unigranrio" {
   block_public_acls   = true
   block_public_policy = true
   ignore_public_acls = true
+
+  depends_on = [aws_s3_bucket.unigranrio, aws_s3_bucket_policy.unigranrio]
+
 }
 
 resource "null_resource" "remove_and_upload_to_s3" {
